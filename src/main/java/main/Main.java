@@ -26,7 +26,7 @@ public class Main {
         RaakaAineDao raaka_aine = new RaakaAineDao(database);
         AnnosRaakaAineDao annosraakaaine = new AnnosRaakaAineDao(database);
 
-        Spark.get("*", (req, res) -> {
+        Spark.get("/", (req, res) -> {
             HashMap map = new HashMap();
             map.put("annokset", annokset.findAll());
 
@@ -35,7 +35,7 @@ public class Main {
 
         Spark.get("/raaka-aineet", (req, res) -> {
             HashMap map = new HashMap();
-            map.put("raaka_aineeet", raaka_aine.findAll());
+            map.put("raaka_aineet", raaka_aine.findAll());
 
             return new ModelAndView(map, "raaka-aineet");
         }, new ThymeleafTemplateEngine());

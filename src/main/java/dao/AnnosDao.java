@@ -18,7 +18,7 @@ public class AnnosDao implements Dao<Annos, Integer> {
         this.database = database;
     }
 
-    public Annos findOne(Integer key) throws SQLException {
+    public Annos findOne(Integer key) throws SQLException, Exception {
         Connection connection = database.getConnection();
         PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Annos WHERE id = ?");
         stmt.setObject(1, key);
@@ -41,7 +41,7 @@ public class AnnosDao implements Dao<Annos, Integer> {
         return annos;
     }
 
-    public Annos saveOrUpdate(Annos annos) throws SQLException {
+    public Annos saveOrUpdate(Annos annos) throws SQLException, Exception {
         if (annos.getId() == null) {
             return save(annos);
         } else {
@@ -49,7 +49,7 @@ public class AnnosDao implements Dao<Annos, Integer> {
         }
     }
 
-    private Annos save(Annos annos) throws SQLException {
+    private Annos save(Annos annos) throws SQLException, Exception {
 
         Connection conn = database.getConnection();
         PreparedStatement stmt = conn.prepareStatement("INSERT INTO Annos"
@@ -79,7 +79,7 @@ public class AnnosDao implements Dao<Annos, Integer> {
         return a;
     }
 
-    private Annos update(Annos annos) throws SQLException {
+    private Annos update(Annos annos) throws SQLException, Exception {
 
         Connection conn = database.getConnection();
         PreparedStatement stmt = conn.prepareStatement("UPDATE Annos SET"
@@ -97,7 +97,7 @@ public class AnnosDao implements Dao<Annos, Integer> {
     }
 
     @Override
-    public List<Annos> findAll() throws SQLException {
+    public List<Annos> findAll() throws SQLException, Exception {
 
         Connection connection = database.getConnection();
         PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Annos");
@@ -119,7 +119,7 @@ public class AnnosDao implements Dao<Annos, Integer> {
     }
 
     @Override
-    public void delete(Integer key) throws SQLException {
+    public void delete(Integer key) throws SQLException, Exception {
         Connection conn = database.getConnection();
         PreparedStatement stmt = conn.prepareStatement("DELETE FROM Annos WHERE id = ?");
         stmt.setInt(1, key);

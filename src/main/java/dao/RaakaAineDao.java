@@ -18,7 +18,7 @@ public class RaakaAineDao implements Dao<RaakaAine, Integer> {
         this.database = database;
     }
 
-    public RaakaAine findOne(Integer key) throws SQLException {
+    public RaakaAine findOne(Integer key) throws SQLException, Exception {
         Connection connection = database.getConnection();
         PreparedStatement stmt = connection.prepareStatement("SELECT * FROM RaakaAine WHERE id = ?");
         stmt.setObject(1, key);
@@ -41,7 +41,7 @@ public class RaakaAineDao implements Dao<RaakaAine, Integer> {
         return raakaaine;
     }
 
-    public RaakaAine saveOrUpdate(RaakaAine raakaaine) throws SQLException {
+    public RaakaAine saveOrUpdate(RaakaAine raakaaine) throws SQLException, Exception {
         if (raakaaine.getId() == null) {
             return save(raakaaine);
         } else {
@@ -49,7 +49,7 @@ public class RaakaAineDao implements Dao<RaakaAine, Integer> {
         }
     }
 
-    private RaakaAine save(RaakaAine raakaaine) throws SQLException {
+    private RaakaAine save(RaakaAine raakaaine) throws SQLException, Exception {
 
         Connection conn = database.getConnection();
         PreparedStatement stmt = conn.prepareStatement("INSERT INTO RaakaAine"
@@ -79,7 +79,7 @@ public class RaakaAineDao implements Dao<RaakaAine, Integer> {
         return a;
     }
 
-    private RaakaAine update(RaakaAine raakaaine) throws SQLException {
+    private RaakaAine update(RaakaAine raakaaine) throws SQLException, Exception {
 
         Connection conn = database.getConnection();
         PreparedStatement stmt = conn.prepareStatement("UPDATE RaakaAine SET"
@@ -97,7 +97,7 @@ public class RaakaAineDao implements Dao<RaakaAine, Integer> {
     }
 
     @Override
-    public List<RaakaAine> findAll() throws SQLException {
+    public List<RaakaAine> findAll() throws SQLException, Exception {
 
         Connection connection = database.getConnection();
         PreparedStatement stmt = connection.prepareStatement("SELECT * FROM RaakaAine");
@@ -119,7 +119,7 @@ public class RaakaAineDao implements Dao<RaakaAine, Integer> {
     }
 
     @Override
-    public void delete(Integer key) throws SQLException {
+    public void delete(Integer key) throws SQLException, Exception {
         Connection conn = database.getConnection();
         PreparedStatement stmt = conn.prepareStatement("DELETE FROM RaakaAine WHERE id = ?");
         stmt.setInt(1, key);

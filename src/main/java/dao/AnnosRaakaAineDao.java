@@ -18,7 +18,7 @@ public class AnnosRaakaAineDao implements Dao<AnnosRaakaAine, Integer> {
         this.database = database;
     }
 
-    public AnnosRaakaAine findOne(Integer key) throws SQLException {
+    public AnnosRaakaAine findOne(Integer key) throws SQLException, Exception {
         Connection connection = database.getConnection();
         PreparedStatement stmt = connection.prepareStatement("SELECT * FROM AnnosRaakaAine WHERE id = ?");
         stmt.setObject(1, key);
@@ -45,7 +45,7 @@ public class AnnosRaakaAineDao implements Dao<AnnosRaakaAine, Integer> {
         return annosraakaaine;
     }
 
-    public AnnosRaakaAine saveOrUpdate(AnnosRaakaAine annosraakaaine) throws SQLException {
+    public AnnosRaakaAine saveOrUpdate(AnnosRaakaAine annosraakaaine) throws SQLException, Exception {
         if (annosraakaaine.getId() == null) {
             return save(annosraakaaine);
         } else {
@@ -53,7 +53,7 @@ public class AnnosRaakaAineDao implements Dao<AnnosRaakaAine, Integer> {
         }
     }
 
-    private AnnosRaakaAine save(AnnosRaakaAine annosraakaaine) throws SQLException {
+    private AnnosRaakaAine save(AnnosRaakaAine annosraakaaine) throws SQLException, Exception {
 
         Connection conn = database.getConnection();
         PreparedStatement stmt = conn.prepareStatement("INSERT INTO AnnosRaakaAine"
@@ -95,7 +95,7 @@ public class AnnosRaakaAineDao implements Dao<AnnosRaakaAine, Integer> {
         return a;
     }
 
-    private AnnosRaakaAine update(AnnosRaakaAine annosraakaaine) throws SQLException {
+    private AnnosRaakaAine update(AnnosRaakaAine annosraakaaine) throws SQLException, Exception {
 
         Connection conn = database.getConnection();
         PreparedStatement stmt = conn.prepareStatement("UPDATE AnnosRaakaAine SET"
@@ -117,7 +117,7 @@ public class AnnosRaakaAineDao implements Dao<AnnosRaakaAine, Integer> {
     }
 
     @Override
-    public List<AnnosRaakaAine> findAll() throws SQLException {
+    public List<AnnosRaakaAine> findAll() throws SQLException, Exception {
 
         Connection connection = database.getConnection();
         PreparedStatement stmt = connection.prepareStatement("SELECT * FROM AnnosRaakaAine");
@@ -144,7 +144,7 @@ public class AnnosRaakaAineDao implements Dao<AnnosRaakaAine, Integer> {
     }
 
     @Override
-    public void delete(Integer key) throws SQLException {
+    public void delete(Integer key) throws SQLException, Exception {
         Connection conn = database.getConnection();
         PreparedStatement stmt = conn.prepareStatement("DELETE FROM AnnosRaakaAine WHERE id = ?");
         stmt.setInt(1, key);
