@@ -16,10 +16,9 @@ import spark.template.thymeleaf.ThymeleafTemplateEngine;
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        // ottaa yhteyden herokun tarjoamaan portiin
-        //  if (System.getenv("PORT") != null) {
-        //    Spark.port(Integer.valueOf(System.getenv("PORT")));
-        //}
+          if (System.getenv("PORT") != null) {
+            Spark.port(Integer.valueOf(System.getenv("PORT")));
+        }
         //Database pitää muokata Herokuun sopivaksi
         Database database = new Database("jdbc:sqlite:reseptit.db");
         AnnosDao annokset = new AnnosDao(database);
