@@ -1,1 +1,1 @@
-web:    java -cp target/classes:target/dependency/* Reseptisovellus.src.main.java.main.Main
+web:    java -cp target/classes:target/dependency/* main.Main
