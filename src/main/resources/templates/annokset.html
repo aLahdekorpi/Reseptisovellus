@@ -19,7 +19,7 @@
         
         <h1>Lisää uusi annos : </h1>
         <form action="/annokset" method="POST">
-           <select th:field="${annokset.idd}"  id="dropOperator">
+           <select th:field="${annokset.id}"  id="dropOperator">
             <option value="0" th:text="Annokseen" ></option>
             <option th:each="annos : ${Annokset}" th:value="${annos.id}" th:text="${annos.nimi}"></option>
            </select>
