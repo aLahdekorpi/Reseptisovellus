@@ -2,13 +2,28 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
     <head>
-        <title>Otsikko</title>
+        <title>Annokset</title>
         <meta charset="utf-8" />
     </head>
 
     <body>
 
-        <h1>Hei maailma!</h1>
-
+        <ul>
+            <li th:each="annos : ${annokset}">
+                <span th:text="${annos}">
+                    :DD
+                          
+                </span>
+            </li>
+        </ul>
+        
+        <form action="/annokset" method="POST">
+           Annokseen: <input type="text" name="annokseen"/>
+           Raaka-aine: <input type="text" name="raaka-aine"/>
+           Jarjestys: <input type="text" name="jarjestys"/>
+           Maara:  <input type="text" name="maara"/>
+           Ohje:  <input type="text" name="ohje"/>
+            <input type="submit"/>
+        </form>
     </body>
 </html>
