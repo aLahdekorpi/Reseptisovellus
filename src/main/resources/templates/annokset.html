@@ -10,8 +10,8 @@
 
         <ul>
             <li th:each="annos : ${annokset}">
-                 <a href="/annokset">
-                        <button>Annokset</button>
+                 <a href="/annokset/${annos.id}">
+                        <button>Näytä</button>
                     </a>  
                 <span th:text="${annos.nimi}">
                     
