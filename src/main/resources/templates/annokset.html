@@ -24,7 +24,7 @@
            </select>
             <br></br>
             <select th:field="*{raakaAine}"  id="drop">
-            <option th:each="raakaAine : ${raaka-aineet}" th:value="${raakaAine.nimi}" th:text="${raakaAine.nimi}"></option>
+            <option th:each="raakaAine : ${raakaAineet}" th:value="${raakaAine.id}" th:text="${raakaAine.nimi}"></option>
            </select>
             <br></br>
                Jarjestys: <input type="text" name="jarjestys"/><br></br>
