@@ -2,13 +2,22 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
     <head>
-        <title>Otsikko</title>
+        <title>jea</title>
         <meta charset="utf-8" />
     </head>
 
     <body>
-
-        <h1>Hei maailma!</h1>
+        <ul>
+            <li th:each="raakaAine : ${raakaAineet}">
+                 
+                <span th:text="${raakaAine.nimi}">  
+                          
+                </span>
+            </li>
+        </ul>
+        <a href="/annokset">                        
+                    <button>Palaa listaukseen</button>
+                    </a> 
 
     </body>
 </html>

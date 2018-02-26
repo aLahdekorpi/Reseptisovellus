@@ -89,7 +89,7 @@ public class Main {
             HashMap map = new HashMap();
             Integer id = Integer.parseInt(req.params(":id"));
             map.put("annos", raaka_aine.findOne(id));
-            map.put("raaka-aineet", annokset.getRaakaAineet(id));
+            map.put("raakaAineet", annokset.getRaakaAineet(id));
             return new ModelAndView(map, "annos");
         }, new ThymeleafTemplateEngine());
         
