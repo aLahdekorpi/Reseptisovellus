@@ -118,10 +118,12 @@ public class AnnosDao implements Dao<Annos, Integer> {
         return annokset;
     }
    
-     public List<RaakaAine> findRaakaAineet(Integer key) throws SQLException, Exception {
+     public List<RaakaAine> getdRaakaAineet(Integer key) throws SQLException, Exception {
      
          Connection connection = database.getConnection();
-         PreparedStatement stmt = connection.prepareStatement("SELECT raakaine FROM raakaaine  INNER JOIN annosraakaaine ON annosraakaaine.raaka_aine_id = raakaaine.id WHERE annosraakaaine.annos_id = ? ");
+         PreparedStatement stmt = connection.prepareStatement("SELECT raakaine FROM raakaaine  "
+                 + "INNER JOIN annosraakaaine ON annosraakaaine.raaka_aine_id = raakaaine.id "
+                 + "WHERE annosraakaaine.annos_id = ? ORDER BY annosraakaaine.jarjestys ");
          stmt.setInt(1, key);
          
          ResultSet rs = stmt.executeQuery();
@@ -141,6 +143,8 @@ public class AnnosDao implements Dao<Annos, Integer> {
          
          
      }
+     
+     
  
     @Override
     public void delete(Integer key) throws SQLException, Exception {

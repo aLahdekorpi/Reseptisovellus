@@ -52,10 +52,11 @@ public class Main {
             HashMap map = new HashMap();
             Integer id = Integer.parseInt(req.params(":id"));
             map.put("raaka_aine", raaka_aine.findOne(id));
-
-            //tarvitsee raakaaineDaoon metodin jotta voidaan listata raaka-aineet
+            map.put("annoksessa", raaka_aine.countAnnokset(id));
+           
             return new ModelAndView(map, "raaka-aine");
         }, new ThymeleafTemplateEngine());
+
 
         Spark.get("/annokset", (req, res) -> {
             HashMap map = new HashMap();
@@ -84,11 +85,11 @@ public class Main {
             return "";
         });
         
-         Spark.get("/annokset/:id", (req, res) -> {
+          Spark.get("/annokset/:id", (req, res) -> {
             HashMap map = new HashMap();
             Integer id = Integer.parseInt(req.params(":id"));
             map.put("annos", raaka_aine.findOne(id));
-            //tarvitsee raakaaineDaoon metodin jotta voidaan listata raaka-aineet
+            map.put("raaka-aineet", annokset.getdRaakaAineet(id));
             return new ModelAndView(map, "annos");
         }, new ThymeleafTemplateEngine());
         
