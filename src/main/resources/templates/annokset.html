@@ -23,7 +23,7 @@
             <option th:each="annos : ${annokset}" th:value="${annos.id}" th:text="${annos.nimi}"></option>
            </select>
             <br></br>
-            <select th:field="*{raakaAine}"  id="dropOperator">
+            <select th:field="*{raakaAine}"  id="drop">
             <option th:each="raakaAine : ${raaka-aineet}" th:value="${raakaAine.id}" th:text="${raakaAine.nimi}"></option>
            </select>
             <br></br>
