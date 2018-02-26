@@ -1,13 +1,27 @@
 <!DOCTYPE html>
-
+<html>
+    
     <head>
-        <title>Otsikko</title>
-        <meta charset="utf-8" />
+        <title>Annokset</title>
     </head>
-
+    
     <body>
-
-        <h1>Hei maailma!</h1>
-
+        <h1>Kaikki</h1>
+        
+        
+        
+        <p th:text="${annokset}">
+            :D
+        </p>
+        
+        <ul>
+            <li th:each="annos : ${annokset}">
+                <span th:text="${annos.nimi}">
+                    :DD
+                </span>
+            </li>
+        </ul>
+        
     </body>
+    
 </html>
