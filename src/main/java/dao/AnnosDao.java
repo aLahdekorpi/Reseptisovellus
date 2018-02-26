@@ -118,10 +118,10 @@ public class AnnosDao implements Dao<Annos, Integer> {
         return annokset;
     }
    
-     public List<RaakaAine> getdRaakaAineet(Integer key) throws SQLException, Exception {
+     public List<RaakaAine> getRaakaAineet(Integer key) throws SQLException, Exception {
      
          Connection connection = database.getConnection();
-         PreparedStatement stmt = connection.prepareStatement("SELECT raakaine FROM raakaaine  "
+         PreparedStatement stmt = connection.prepareStatement("SELECT raakaAine FROM raakaaine  "
                  + "INNER JOIN annosraakaaine ON annosraakaaine.raaka_aine_id = raakaaine.id "
                  + "WHERE annosraakaaine.annos_id = ? ORDER BY annosraakaaine.jarjestys ");
          stmt.setInt(1, key);

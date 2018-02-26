@@ -51,7 +51,7 @@ public class Main {
         Spark.get("/raaka-aineet/:id", (req, res) -> {
             HashMap map = new HashMap();
             Integer id = Integer.parseInt(req.params(":id"));
-            map.put("raaka_aine", raaka_aine.findOne(id));
+            map.put("raakaAine", raaka_aine.findOne(id));
             map.put("annoksessa", raaka_aine.countAnnokset(id));
            
             return new ModelAndView(map, "raaka-aine");
@@ -89,7 +89,7 @@ public class Main {
             HashMap map = new HashMap();
             Integer id = Integer.parseInt(req.params(":id"));
             map.put("annos", raaka_aine.findOne(id));
-            map.put("raaka-aineet", annokset.getdRaakaAineet(id));
+            map.put("raaka-aineet", annokset.getRaakaAineet(id));
             return new ModelAndView(map, "annos");
         }, new ThymeleafTemplateEngine());
         
