@@ -2,19 +2,24 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
     <head>
-        <title>jea</title>
+        <title>Annos</title>
         <meta charset="utf-8" />
     </head>
-
+    
     <body>
+        <h1> Raaka-aineet tässä annoksessa</h1>
+        <h2 th:text="${ohjeet}">testi</h2>
         <ul>
             <li th:each="raakaAine : ${raakaAineet}">
                  
                 <span th:text="${raakaAine.nimi}">  
-                          lei
+                          nimi
                 </span>
+             
+               
             </li>
         </ul>
+        
         <a href="/annokset">                        
                     <button>Palaa listaukseen</button>
                     </a> 

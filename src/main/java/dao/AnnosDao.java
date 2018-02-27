@@ -2,6 +2,7 @@ package dao;
 
 import database.Database;
 import domain.Annos;
+import domain.AnnosRaakaAine;
 import domain.RaakaAine;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -61,16 +62,29 @@ public class AnnosDao implements Dao<Annos, Integer> {
 
         Connection conn = database.getConnection();
         PreparedStatement stmt = conn.prepareStatement("INSERT INTO Annos"
+<<<<<<< HEAD
                 + " (nimi)"
                 + " VALUES (?)");
         stmt.setString(1, annos.getNimi());
+=======
+                + " (id, nimi)"
+                + " VALUES (?, ?)");
+        stmt.setInt(1, annos.getId());
+        stmt.setString(2, annos.getNimi());
+>>>>>>> 336b0e822312d9affdf8497b613edacc0e3927ea
 
         stmt.executeUpdate();
         stmt.close();
 
         stmt = conn.prepareStatement("SELECT * FROM Annos"
+<<<<<<< HEAD
                 + " WHERE nimi = ?");
         stmt.setString(1, annos.getNimi());
+=======
+                + " WHERE id = ? AND nimi = ?");
+        stmt.setInt(1, annos.getId());
+        stmt.setString(2, annos.getNimi());
+>>>>>>> 336b0e822312d9affdf8497b613edacc0e3927ea
 
         ResultSet rs = stmt.executeQuery();
         rs.next();
@@ -89,9 +103,16 @@ public class AnnosDao implements Dao<Annos, Integer> {
 
         Connection conn = database.getConnection();
         PreparedStatement stmt = conn.prepareStatement("UPDATE Annos SET"
+<<<<<<< HEAD
                 + " nimi = ? WHERE id = ?");
         stmt.setString(1, annos.getNimi());
         stmt.setInt(2, annos.getId());
+=======
+                + "id = ?, nimi = ? WHERE id = ?");
+        stmt.setInt(1, annos.getId());
+        stmt.setString(2, annos.getNimi());
+        stmt.setInt(3, annos.getId());
+>>>>>>> 336b0e822312d9affdf8497b613edacc0e3927ea
 
         stmt.executeUpdate();
 
@@ -126,7 +147,11 @@ public class AnnosDao implements Dao<Annos, Integer> {
     public List<RaakaAine> getRaakaAineet(Integer key) throws SQLException, Exception {
 
         Connection connection = database.getConnection();
+<<<<<<< HEAD
         PreparedStatement stmt = connection.prepareStatement("SELECT raakaAine FROM raakaaine  "
+=======
+        PreparedStatement stmt = connection.prepareStatement("SELECT * FROM raakaaine  "
+>>>>>>> 336b0e822312d9affdf8497b613edacc0e3927ea
                 + "INNER JOIN annosraakaaine ON annosraakaaine.raaka_aine_id = raakaaine.id "
                 + "WHERE annosraakaaine.annos_id = ? ORDER BY annosraakaaine.jarjestys ");
         stmt.setInt(1, key);
@@ -148,6 +173,28 @@ public class AnnosDao implements Dao<Annos, Integer> {
 
     }
 
+<<<<<<< HEAD
+=======
+    public List<AnnosRaakaAine> getOhjeet(Integer key) throws SQLException, Exception {
+        Connection connection = database.getConnection();
+        PreparedStatement smt = connection.prepareStatement("SELECT * FROM  annosraakaaine "
+                + "WHERE annosraakaaine.annos_id = ? ORDER BY jarjestys");
+        smt.setInt(1, key);
+        ResultSet rs = smt.executeQuery();
+
+        ArrayList<AnnosRaakaAine> ohjeet = new ArrayList<>();
+        while (rs.next()) {
+            AnnosRaakaAine a = new AnnosRaakaAine(rs.getInt("id"),
+                    rs.getInt("annos_id"), rs.getInt("raaka_aine_id"),
+                    rs.getInt("jarjestys"), rs.getString("maara"), rs.getString("ohje"));
+            ohjeet.add(a);
+        }
+        
+        return ohjeet;
+
+    }
+
+>>>>>>> 336b0e822312d9affdf8497b613edacc0e3927ea
     @Override
     public void delete(Integer key) throws SQLException, Exception {
         Connection conn = database.getConnection();

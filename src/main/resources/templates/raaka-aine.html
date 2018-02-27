@@ -2,13 +2,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
     <head>
-        <title>Otsikko</title>
+        <title>yksittäinen</title>
         <meta charset="utf-8" />
     </head>
 
     <body>
-
-        <h1>Hei maailma!</h1>
+        <h1>Annosten määrä, jotka sisältävät tämän raaka-aineen: </h1>
+        <span th:text="${annoksessa}">
+                    
+                    :DD
+                          
+                </span>
+        <br></br>
+        <a href="/">                        
+                    <button>Palaa etusivulle</button>
+                    </a> 
 
     </body>
 </html>
