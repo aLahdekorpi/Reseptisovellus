@@ -28,7 +28,7 @@
         </form>
         
         <h2>Lisää uusi raaka-aine</h2>
-        <form action="/raaka" method="POST">
+        <form action="/raaka-aineet" method="POST">
            <select th:field="*{annos}"  id="dropOperator">
             <option th:each="annos : ${annokset}" th:value="${annos.id}" th:text="${annos.nimi}"></option>
            </select>
