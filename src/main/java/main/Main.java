@@ -33,7 +33,7 @@ public class Main {
  
         Spark.get("/raaka-aineet", (req, res) -> {
             HashMap map = new HashMap();
-            map.put("raaka_aineet", raaka_aine.findAll());
+            map.put("raakaAineet", raaka_aine.findAll());
  
             return new ModelAndView(map, "raaka-aineet");
         }, new ThymeleafTemplateEngine());
@@ -59,15 +59,13 @@ public class Main {
         Spark.get("/annokset", (req, res) -> {
             HashMap map = new HashMap();
             map.put("annokset", annokset.findAll());
+            map.put("raakaAineet", raaka_aine.findAll());
             return new ModelAndView(map, "annokset");
         }, new ThymeleafTemplateEngine());
  
         // Annosten luominen ja raaka-aineiden yhdistäminen
         Spark.post("/annokset", (req, res) -> {
-            //uusi annos
-            String annosnimi = req.queryParams("nimi");
-            Annos a = new Annos(-1, annosnimi);
-            annokset.saveOrUpdate(a);
+            
             //yhdista raaka_aineet
             int annos_id = Integer.valueOf(req.queryParams("annokseen"));
             int raakaaine_id = Integer.valueOf(req.queryParams("raaka-aine"));
@@ -105,6 +103,15 @@ public class Main {
             return new ModelAndView(map, "annos");
         }, new ThymeleafTemplateEngine());
  
+        Spark.post("/uusiAnnos", (req, res) -> {
+            //uusi annos
+            String annosnimi = req.queryParams("nimi");
+            Annos a = new Annos(-1, annosnimi);
+            annokset.saveOrUpdate(a);
+            res.redirect("/annokset");
+            return "";
+            
+        });
     }
  
 }
