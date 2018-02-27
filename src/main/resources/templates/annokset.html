@@ -7,7 +7,7 @@
     </head>
 
     <body>
-
+        <h1 th:text="${ohjeet.maara}">testi</h1>
         <ul>
             <li th:each="annos : ${annokset}">
                 <a th:href="@{~/annokset/{id}(id=${annos.id})}">                        
