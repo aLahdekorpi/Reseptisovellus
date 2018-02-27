@@ -12,7 +12,13 @@
             <li th:each="raakaAine : ${raakaAineet}">
                  
                 <span th:text="${raakaAine.nimi}">  
-                          lei
+                          nimi
+                </span>
+                <span th:text="${raakaAine.maara}">  
+                          maara
+                </span>
+                <span th:text="${raakaAine.ohje}">  
+                          ohje
                 </span>
             </li>
         </ul>
