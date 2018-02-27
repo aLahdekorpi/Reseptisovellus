@@ -22,7 +22,13 @@
         </ul>
         
         <h1>Lisää uusi annos : </h1>
-        <form action="/annokset" method="POST">
+        <form action="/uusiAnnos" method="POST">
+          <input type="text" name="ohje"/>
+          Lisää: <input type="submit"/>
+        </form>
+        
+        <h2>Lisää uusi raaka-aine</h2>
+        <form action="/raaka" method="POST">
            <select th:field="*{annos}"  id="dropOperator">
             <option th:each="annos : ${annokset}" th:value="${annos.id}" th:text="${annos.nimi}"></option>
            </select>
@@ -34,6 +40,7 @@
                Jarjestys: <input type="text" name="jarjestys"/><br></br>
                Määrä:  <input type="text" name="maara"/><br></br>
            Ohje:  <input type="text" name="ohje"/>
+           <br></br>
             <input type="submit"/>
         </form>
     </body>

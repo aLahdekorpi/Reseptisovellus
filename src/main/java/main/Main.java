@@ -65,10 +65,7 @@ public class Main {
  
         // Annosten luominen ja raaka-aineiden yhdistäminen
         Spark.post("/annokset", (req, res) -> {
-            //uusi annos
-            String annosnimi = req.queryParams("nimi");
-            Annos a = new Annos(-1, annosnimi);
-            annokset.saveOrUpdate(a);
+            
             //yhdista raaka_aineet
             int annos_id = Integer.valueOf(req.queryParams("annokseen"));
             int raakaaine_id = Integer.valueOf(req.queryParams("raaka-aine"));
@@ -106,6 +103,15 @@ public class Main {
             return new ModelAndView(map, "annos");
         }, new ThymeleafTemplateEngine());
  
+        Spark.post("/uusiAnnos", (req, res) -> {
+            //uusi annos
+            String annosnimi = req.queryParams("nimi");
+            Annos a = new Annos(-1, annosnimi);
+            annokset.saveOrUpdate(a);
+            res.redirect("/annokset");
+            return "";
+            
+        });
     }
  
 }
