@@ -43,10 +43,18 @@ public class AnnosDao implements Dao<Annos, Integer> {
     }
 
     public Annos saveOrUpdate(Annos annos) throws SQLException, Exception {
-        if (annos.getId() == null) {
-            return save(annos);
-        } else {
-            return update(annos);
+
+        try (Connection conn = database.getConnection()) {
+            PreparedStatement stmt = conn.prepareStatement("SELECT id, nimi FROM Annos WHERE nimi = ?");
+            stmt.setString(1, annos.getNimi());
+
+            ResultSet result = stmt.executeQuery();
+
+            if (!result.next()) {
+                return save(annos);
+            } else {
+                return update(annos);
+            }
         }
     }
 
@@ -54,18 +62,16 @@ public class AnnosDao implements Dao<Annos, Integer> {
 
         Connection conn = database.getConnection();
         PreparedStatement stmt = conn.prepareStatement("INSERT INTO Annos"
-                + " (id, nimi)"
-                + " VALUES (?, ?)");
-        stmt.setInt(1, annos.getId());
-        stmt.setString(2, annos.getNimi());
+                + " (nimi)"
+                + " VALUES (?)");
+        stmt.setString(1, annos.getNimi());
 
         stmt.executeUpdate();
         stmt.close();
 
         stmt = conn.prepareStatement("SELECT * FROM Annos"
-                + " WHERE id = ? AND nimi = ?");
-        stmt.setInt(1, annos.getId());
-        stmt.setString(2, annos.getNimi());
+                + " WHERE nimi = ?");
+        stmt.setString(1, annos.getNimi());
 
         ResultSet rs = stmt.executeQuery();
         rs.next();
@@ -84,10 +90,9 @@ public class AnnosDao implements Dao<Annos, Integer> {
 
         Connection conn = database.getConnection();
         PreparedStatement stmt = conn.prepareStatement("UPDATE Annos SET"
-                + "id = ?, nimi = ? WHERE id = ?");
-        stmt.setInt(1, annos.getId());
-        stmt.setString(2, annos.getNimi());
-        stmt.setInt(3, annos.getId());
+                + " nimi = ? WHERE id = ?");
+        stmt.setString(1, annos.getNimi());
+        stmt.setInt(2, annos.getId());
 
         stmt.executeUpdate();
 

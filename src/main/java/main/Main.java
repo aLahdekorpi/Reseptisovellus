@@ -100,7 +100,7 @@ public class Main {
             Integer id = Integer.parseInt(req.params(":id"));
             map.put("annos", raaka_aine.findOne(id));
             map.put("raakaAineet", annokset.getRaakaAineet(id));
-            map.put("ohjeet", annokset.getOhjeet(id));
+            map.put("AnnosRaakaAine", annokset.getOhjeet(id));
             return new ModelAndView(map, "annos");
         }, new ThymeleafTemplateEngine());
  
