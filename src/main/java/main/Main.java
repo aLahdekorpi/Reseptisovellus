@@ -105,9 +105,9 @@ public class Main {
         Spark.get("/annokset/:id", (req, res) -> {
             HashMap map = new HashMap();
             Integer id = Integer.parseInt(req.params(":id"));
-            map.put("annos", raaka_aine.findOne(id));
+            /*map.put("annos", raaka_aine.findOne(id));
             map.put("raakaAineet", annokset.getRaakaAineet(id));
-            map.put("AnnosRaakaAine", annokset.getOhjeet(id));
+            map.put("AnnosRaakaAine", annokset.getOhjeet(id));*/
             
             List<String> kaikki = new ArrayList<>();
             for (int i = 0; i<annokset.getRaakaAineet(id).size(); i++){
