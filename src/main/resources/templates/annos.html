@@ -9,14 +9,14 @@
     <body>
         <h1> Raaka-aineet tässä annoksessa</h1>
 
-        <h2 th:text="${AnnosRaakaAine.maara}">testi</h2>
 
         <ul>
-            <li th:each="raakaAine : ${raakaAineet}">
+            <li th:each="k : ${kaikki}">
                  
-                <span th:text="${raakaAine.nimi}">  
-                          nimi
+                <span th:text="${k}">  
+                          info
                 </span>
+                
              
                
             </li>

@@ -7,7 +7,9 @@ import database.Database;
 import domain.Annos;
 import domain.AnnosRaakaAine;
 import domain.RaakaAine;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import spark.ModelAndView;
 import spark.Spark;
 import spark.template.thymeleaf.ThymeleafTemplateEngine;
@@ -106,6 +108,16 @@ public class Main {
             map.put("annos", raaka_aine.findOne(id));
             map.put("raakaAineet", annokset.getRaakaAineet(id));
             map.put("AnnosRaakaAine", annokset.getOhjeet(id));
+            
+            List<String> kaikki = new ArrayList<>();
+            for (int i = 0; i<annokset.getRaakaAineet(id).size(); i++){
+                kaikki.add("\n");
+                kaikki.add(annokset.getRaakaAineet(id).get(i).getNimi()+ " ");
+                kaikki.add(annokset.getOhjeet(id).getMaara() + " ");
+                kaikki.add(annokset.getOhjeet(id).getOhje() + "");
+            }
+            map.put("kaikki", kaikki);
+            
             return new ModelAndView(map, "annos");
         }, new ThymeleafTemplateEngine());
  
