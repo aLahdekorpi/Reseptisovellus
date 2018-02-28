@@ -149,13 +149,12 @@ public class AnnosDao implements Dao<Annos, Integer> {
 
     }
 
-    public List<AnnosRaakaAine> getOhjeet(Integer key) throws SQLException, Exception {
+    public AnnosRaakaAine getOhjeet(Integer key) throws SQLException, Exception {
         Connection connection = database.getConnection();
         PreparedStatement smt = connection.prepareStatement("SELECT * FROM  annosraakaaine "
                 + "WHERE annosraakaaine.annos_id = ? ORDER BY jarjestys");
         smt.setInt(1, key);
         ResultSet rs = smt.executeQuery();
-
         ArrayList<AnnosRaakaAine> ohjeet = new ArrayList<>();
         while (rs.next()) {
             AnnosRaakaAine a = new AnnosRaakaAine(rs.getInt("id"),
@@ -163,8 +162,8 @@ public class AnnosDao implements Dao<Annos, Integer> {
                     rs.getInt("jarjestys"), rs.getString("maara"), rs.getString("ohje"));
             ohjeet.add(a);
         }
-        
-        return ohjeet;
+ 
+        return ohjeet.get(0);
 
     }
 
