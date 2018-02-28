@@ -112,7 +112,7 @@ public class Main {
             List<String> kaikki = new ArrayList<>();
             for (int i = 0; i<annokset.getRaakaAineet(id).size(); i++){
 
-                kaikki.add(annokset.getRaakaAineet(id).get(i).getNimi() + ", " + annokset.getOhjeet(id).get(i).getMaara() + ", ohje:" + kaikki.add(annokset.getOhjeet(id).get(i).getOhje()));
+                kaikki.add(kaikki.add(annokset.getOhjeet(id).get(i).getOhje()) + annokset.getRaakaAineet(id).get(i).getNimi() + ", " + annokset.getOhjeet(id).get(i).getMaara());
                 kaikki.add("\n");
             }
             
