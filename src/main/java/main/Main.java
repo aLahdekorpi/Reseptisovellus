@@ -40,7 +40,7 @@ public class Main {
  
         Spark.post("/raaka-aineet", (req, res) -> {
          int annos_id = Integer.valueOf(req.queryParams("annokseen"));
-            int raakaaine_id = Integer.valueOf(req.queryParams("raaka-aine"));
+            int raakaaine_id = Integer.valueOf(req.queryParams("raakaAine"));
            
             String maara = req.queryParams("maara");
             String ohje = req.queryParams("ohje");
