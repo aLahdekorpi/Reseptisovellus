@@ -47,7 +47,7 @@ public class AnnosRaakaAineDao implements Dao<AnnosRaakaAine, Integer> {
     public AnnosRaakaAine saveOrUpdate(AnnosRaakaAine annosraakaaine) throws SQLException, Exception {
 
         try (Connection conn = database.getConnection()) {
-            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Annos annosraakaaine WHERE annos_id = ? AND raaka_aine_id = ?");
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM annosraakaaine WHERE annos_id = ? AND raaka_aine_id = ?");
             stmt.setInt(1, annosraakaaine.getAnnosId());
             stmt.setInt(2, annosraakaaine.getRaakaAineId());
 
