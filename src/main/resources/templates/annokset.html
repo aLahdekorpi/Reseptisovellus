@@ -29,12 +29,12 @@
         
         <h2>Lisää uusi raaka-aine</h2>
         <form action="/raaka-aineet" method="POST">
-           <select th:field="*{annos}"  id="dropOperator">
-            <option th:each="annos : ${annokset}" th:value="${annos.id}" th:text="${annos.nimi}"></option>
+           <select th:field="*{annos}"  name="annokseen">
+            <option th:each="annos : ${annokset}" th:value="${annos.id}" th:text="${annos.nimi}" name="${annos.id}"></option>
            </select>
             <br></br>
-            <select th:field="*{raakaAine}"  id="drop">
-            <option th:each="raakaAine : ${raakaAineet}" th:value="${raakaAine.id}" th:text="${raakaAine.nimi}"></option>
+            <select th:field="*{raakaAine}"  name ="raakaAine">
+            <option th:each="raakaAine : ${raakaAineet}" th:value="${raakaAine.id}" th:text="${raakaAine.nimi}" name="${raaraakaAine.id}"></option>
            </select>
             <br></br>
                Jarjestys: <input type="text" name="jarjestys"/><br></br>
