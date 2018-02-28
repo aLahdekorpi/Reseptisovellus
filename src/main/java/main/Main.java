@@ -40,6 +40,12 @@ public class Main {
  
         Spark.post("/raaka-aineet", (req, res) -> {
          String raakaAineNimi = req.queryParams("nimi");
+         
+         if (raakaAineNimi.equals("")) {
+                res.status(418);
+                return "Väärä tai tyhjä syöte";
+ 
+            }
          RaakaAine ran = new RaakaAine(-1, raakaAineNimi);
          raaka_aine.saveOrUpdate(ran);
          res.redirect("/raaka-aineet");
@@ -106,6 +112,12 @@ public class Main {
         Spark.post("/uusiAnnos", (req, res) -> {
             //uusi annos
             String annosnimi = req.queryParams("nimi");
+           
+            if (annosnimi.equals("")) {
+                res.status(418);
+                return "Väärä tai tyhjä syöte";
+ 
+            }
             Annos a = new Annos(-1, annosnimi);
             annokset.saveOrUpdate(a);
             res.redirect("/annokset");
