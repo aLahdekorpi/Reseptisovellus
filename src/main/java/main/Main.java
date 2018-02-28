@@ -111,11 +111,11 @@ public class Main {
             
             List<String> kaikki = new ArrayList<>();
             for (int i = 0; i<annokset.getRaakaAineet(id).size(); i++){
+
+                kaikki.add(annokset.getRaakaAineet(id).get(i).getNimi() + ", " + annokset.getOhjeet(id).get(i).getMaara() + ", ohje:" + kaikki.add(annokset.getOhjeet(id).get(i).getOhje()));
                 kaikki.add("\n");
-                kaikki.add(annokset.getRaakaAineet(id).get(i).getNimi()+ " ");
-                kaikki.add(annokset.getOhjeet(id).getMaara() + " ");
-                kaikki.add(annokset.getOhjeet(id).getOhje() + "");
             }
+            
             map.put("kaikki", kaikki);
             
             return new ModelAndView(map, "annos");

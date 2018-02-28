@@ -149,7 +149,7 @@ public class AnnosDao implements Dao<Annos, Integer> {
 
     }
 
-    public AnnosRaakaAine getOhjeet(Integer key) throws SQLException, Exception {
+    public List<AnnosRaakaAine> getOhjeet(Integer key) throws SQLException, Exception {
         Connection connection = database.getConnection();
         PreparedStatement smt = connection.prepareStatement("SELECT * FROM  annosraakaaine "
                 + "WHERE annosraakaaine.annos_id = ? ORDER BY jarjestys");
@@ -163,7 +163,7 @@ public class AnnosDao implements Dao<Annos, Integer> {
             ohjeet.add(a);
         }
  
-        return ohjeet.get(0);
+        return ohjeet;
 
     }
 
