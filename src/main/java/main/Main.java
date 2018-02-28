@@ -39,31 +39,10 @@ public class Main {
         }, new ThymeleafTemplateEngine());
  
         Spark.post("/raaka-aineet", (req, res) -> {
-         int annos_id = Integer.valueOf(req.queryParams("annokseen"));
-            int raakaaine_id = Integer.valueOf(req.queryParams("raakaAine"));
-           
-            String maara = req.queryParams("maara");
-            String ohje = req.queryParams("ohje");
-           
-            int jarjestys;
-            try {
-                jarjestys = Integer.valueOf(req.queryParams("jarjestys"));
-            } catch (NumberFormatException e) {
-                res.status(418);
-                return "Väärä tai tyhjä syöte";
-            }
- 
-            if (maara.equals("") || ohje.equals("")) {
-                res.status(418);
-                return "Väärä tai tyhjä syöte";
- 
-            }
- 
-            AnnosRaakaAine ara
-                    = new AnnosRaakaAine(-1, annos_id, raakaaine_id, jarjestys, maara, ohje);
-            annosraakaaine.saveOrUpdate(ara);
- 
-            res.redirect("/annokset");
+         String raakaAineNimi = req.queryParams("nimi");
+         RaakaAine ran = new RaakaAine(-1, raakaAineNimi);
+         raaka_aine.saveOrUpdate(ran);
+         res.redirect("/raaka-aineet");
             return "";
         });
  
@@ -84,11 +63,11 @@ public class Main {
         }, new ThymeleafTemplateEngine());
  
         // Annosten luominen ja raaka-aineiden yhdistäminen
-        Spark.post("/annokset", (req, res) -> {
+        Spark.post("/annokseenLisaaminen", (req, res) -> {
             
             //yhdista raaka_aineet
-            int annos_id = Integer.valueOf(req.queryParams("annokseen"));
-            int raakaaine_id = Integer.valueOf(req.queryParams("raaka-aine"));
+          int annos_id = Integer.valueOf(req.queryParams("annokseen"));
+            int raakaaine_id = Integer.valueOf(req.queryParams("raakaAine"));
            
             String maara = req.queryParams("maara");
             String ohje = req.queryParams("ohje");
